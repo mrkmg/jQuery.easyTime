@@ -160,9 +160,10 @@
 			
 			var d = new Date();
 			var time = $this.val().match(/(\d+)(?::(\d\d))?\s*(p?)/);
-			d.setHours( parseInt(time[1]) + ( ( parseInt(time[1]) < 12 && time[3] ) ? 12 : 0) );
-			d.setMinutes( parseInt(time[2]) || 0 );
-			
+			if(time){
+				d.setHours( parseInt(time[1]) + ( ( parseInt(time[1]) < 12 && time[3] ) ? 12 : 0) );
+				d.setMinutes( parseInt(time[2]) || 0 );
+			}
 			data.currentTime = d;
 			
 			privates.saveData(obj,data);
